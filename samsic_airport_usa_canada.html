@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsic Airport USA & Canada</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "surface": "#f5faff",
+                "surface-container": "#def0ff",
+                "clean-slate": "#EDF4F7",
+                "on-secondary-fixed": "#001f2a",
+                "error-container": "#ffdad6",
+                "inverse-surface": "#21323d",
+                "on-surface-variant": "#44464f",
+                "on-primary-container": "#8aa0da",
+                "surface-container-highest": "#d3e5f3",
+                "airport-navy": "#1E3669",
+                "on-error-container": "#93000a",
+                "on-secondary-fixed-variant": "#004d64",
+                "surface-container-lowest": "#ffffff",
+                "on-secondary-container": "#005c76",
+                "surface-cream": "#F6F4EF",
+                "on-surface": "#0c1d28",
+                "outline-variant": "#c5c6d1",
+                "surface-tint": "#475d92",
+                "safety-amber": "#FF9600",
+                "surface-bright": "#f5faff",
+                "inverse-primary": "#b1c6ff",
+                "on-tertiary-container": "#eb8a00",
+                "surface-container-low": "#eaf5ff",
+                "tertiary-fixed-dim": "#ffb872",
+                "runway-gray": "#4A4A4A",
+                "on-primary": "#ffffff",
+                "on-background": "#0c1d28",
+                "secondary": "#006683",
+                "on-error": "#ffffff",
+                "primary-fixed": "#d9e2ff",
+                "secondary-fixed-dim": "#70d2fb",
+                "inverse-on-surface": "#e4f3ff",
+                "surface-container-high": "#d8ebf9",
+                "primary": "#022052",
+                "primary-container": "#1e3669",
+                "on-primary-fixed": "#001946",
+                "tertiary": "#371c00",
+                "secondary-container": "#73d5fe",
+                "tertiary-fixed": "#ffdcbf",
+                "primary-fixed-dim": "#b1c6ff",
+                "tertiary-container": "#552f00",
+                "on-primary-fixed-variant": "#2e4579",
+                "on-secondary": "#ffffff",
+                "on-tertiary-fixed": "#2d1600",
+                "outline": "#757780",
+                "background": "#f5faff",
+                "surface-dim": "#cadceb",
+                "on-tertiary-fixed-variant": "#6a3b00",
+                "error": "#ba1a1a",
+                "surface-variant": "#d3e5f3",
+                "on-tertiary": "#ffffff",
+                "sky-blue": "#59BEE6",
+                "secondary-fixed": "#bde9ff"
+              },
+              borderRadius: {
+                DEFAULT: "0.125rem",
+                lg: "0.25rem",
+                xl: "0.5rem",
+                full: "0.75rem"
+              },
+              spacing: {
+                "gutter": "24px",
+                "stack-sm": "12px",
+                "stack-lg": "48px",
+                "margin-mobile": "16px",
+                "stack-md": "24px",
+                "margin-desktop": "48px",
+                "container-max": "1280px",
+                "base": "8px"
+              },
+              fontFamily: {
+                "label-bold": ["Inter"],
+                "display-lg": ["Hanken Grotesk"],
+                "body-lg": ["Inter"],
+                "headline-md": ["Hanken Grotesk"],
+                "body-md": ["Inter"],
+                "headline-lg-mobile": ["Hanken Grotesk"],
+                "caption": ["Inter"],
+                "headline-lg": ["Hanken Grotesk"]
+              },
+              fontSize: {
+                "label-bold": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600" }],
+                "display-lg": ["56px", { lineHeight: "64px", letterSpacing: "-0.02em", fontWeight: "800" }],
+                "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                "headline-md": ["28px", { lineHeight: "36px", fontWeight: "600" }],
+                "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                "headline-lg-mobile": ["32px", { lineHeight: "40px", fontWeight: "700" }],
+                "caption": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+                "headline-lg": ["40px", { lineHeight: "48px", letterSpacing: "-0.01em", fontWeight: "700" }]
+              }
+            }
+          }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/history@5/umd/history.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-router@6.3.0/umd/react-router.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-router-dom@6.3.0/umd/react-router-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-sky-blue selection:text-airport-navy flex flex-col min-h-screen">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { createRoot } = ReactDOM;
+        const { MemoryRouter, Routes, Route, Link, useNavigate, useLocation } = ReactRouterDOM;
+
+        // Components
+        const Header = () => {
+            const location = useLocation();
+            
+            return (
+                <header className="bg-surface/90 dark:bg-inverse-surface/90 backdrop-blur-md sticky top-0 z-50 w-full border-b border-on-surface/10 dark:border-white/10">
+                    <div className="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+                        <div className="flex items-center gap-2">
+                            <img alt="Samsic Airport Logo" className="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaw7Aq8fof6je-smVO9Og0NlTdvvxyFqsRD5MP3Pd5jbFFRac37RBpWiZ-W3x8N4p4Kkx68md0BAOUxf_hesHNX_cHB8s6MNCBoo97oIlSoDODAkgadRrtVV-7IRwGK-0EhOk0mQqSXy_vpnmSvpVsyHjO5QuyziILresBeZMEk6yEMzUXUNFp4Rno6cXREOiTKiTAjus_cBWAEFmNn6b2mLv_pGoqCEXrhwZ7HonFuJHp6DDNTYEU31vFj3cI6fPKPDI61qNSMOo" />
+                            <span className="text-body-lg font-headline-lg tracking-tighter text-airport-navy dark:text-inverse-on-surface uppercase font-bold">Samsic Airport USA & Canada</span>
+                        </div>
+                        <nav className="hidden md:flex items-center gap-8">
+                            <Link to="/" className={`text-label-bold font-label-bold hover:bg-surface-container-low transition-all duration-200 ${location.pathname === '/' ? 'text-airport-navy dark:text-sky-blue border-b-2 border-airport-navy dark:border-sky-blue pb-1' : 'text-runway-gray dark:text-outline-variant hover:text-airport-navy dark:hover:text-sky-blue'}`}>Services</Link>
+                            <Link to="/careers" className={`text-label-bold font-label-bold hover:bg-surface-container-low transition-all duration-200 ${location.pathname === '/careers' ? 'text-airport-navy dark:text-sky-blue border-b-2 border-airport-navy dark:border-sky-blue pb-1' : 'text-runway-gray dark:text-outline-variant hover:text-airport-navy dark:hover:text-sky-blue'}`}>Careers</Link>
+                            <a className="text-runway-gray dark:text-outline-variant hover:text-airport-navy dark:hover:text-sky-blue transition-colors text-label-bold font-label-bold hover:bg-surface-container-low duration-200" href="#">Network</a>
+                            <a className="text-runway-gray dark:text-outline-variant hover:text-airport-navy dark:hover:text-sky-blue transition-colors text-label-bold font-label-bold hover:bg-surface-container-low duration-200" href="#">News</a>
+                            <a className="text-runway-gray dark:text-outline-variant hover:text-airport-navy dark:hover:text-sky-blue transition-colors text-label-bold font-label-bold hover:bg-surface-container-low duration-200" href="#">About Us</a>
+                        </nav>
+                        <div className="hidden md:block">
+                            <button className="bg-airport-navy text-white text-label-bold font-label-bold py-2 px-6 rounded hover:bg-primary transition-colors focus:outline-none focus:ring-2 focus:ring-sky-blue">Contact Us</button>
+                        </div>
+                        <button className="md:hidden text-airport-navy">
+                            <span className="material-symbols-outlined" data-icon="menu">menu</span>
+                        </button>
+                    </div>
+                </header>
+            );
+        };
+
+        const Footer = () => (
+            <footer aria-label="Footer" className="bg-airport-navy dark:bg-primary-container w-full mt-auto">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center px-margin-mobile md:px-margin-desktop py-stack-md w-full max-w-container-max mx-auto gap-8">
+                    <div className="flex flex-col gap-4">
+                        <span className="font-headline-md text-headline-md font-bold text-white">Samsic Airport USA & Canada</span>
+                        <p className="font-body-md text-body-md text-clean-slate/80 dark:text-surface-variant/80">© 2024 Samsic Airport USA & Canada. All rights reserved.</p>
+                    </div>
+                    <nav aria-label="Footer Navigation">
+                        <ul className="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <li><a className="font-label-bold text-label-bold text-clean-slate/80 dark:text-surface-variant/80 hover:text-sky-blue transition-colors duration-300" href="#">Privacy Policy</a></li>
+                            <li><a className="font-label-bold text-label-bold text-clean-slate/80 dark:text-surface-variant/80 hover:text-sky-blue transition-colors duration-300" href="#">Terms of Service</a></li>
+                            <li><a className="font-label-bold text-label-bold text-clean-slate/80 dark:text-surface-variant/80 hover:text-sky-blue transition-colors duration-300" href="#">Sustainability</a></li>
+                            <li><Link to="/careers" className="font-label-bold text-label-bold text-white font-bold underline underline-offset-4 hover:text-sky-blue transition-colors duration-300">Careers</Link></li>
+                        </ul>
+                    </nav>
+                </div>
+            </footer>
+        );
+
+        // Screens
+        const ServicesScreen = () => (
+            <main>
+                <section className="relative w-full h-[600px] flex items-center bg-airport-navy">
+                    <div className="absolute inset-0 w-full h-full">
+                        <img alt="Airport Terminal Tarmac" className="w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIZ96qQCMbPo20WEOZw2hGv1cR-V-n2HH-KGfeXCfkyAr7k_nV9lsbqlhHk8gS9I38oSlmqB-F-8soJ2NN_flU3WMhEchHHmixv73_SSJZhpnE_vPJasuov44L7BEMDuhRtSur507eryQD7wDgeJY0NXd6XnmMRNbydcWCetGyVQUtaTwhvvndFxYdPUf6CXe5A0NAddamvpS-2DLhSSl-eQhHiFgoCngWV60D027K8OurQmBrzmZmDoUatXxcGINh8_XejP1LPHQ" />
+                    </div>
+                    <div className="relative z-10 w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-white">
+                        <div className="max-w-2xl">
+                            <h1 className="text-headline-lg-mobile md:text-display-lg font-display-lg mb-stack-md leading-tight text-white drop-shadow-md">Simplifying and securing the passenger experience in the USA.</h1>
+                            <p className="text-body-lg font-body-lg mb-stack-lg text-surface-container-lowest/90 drop-shadow">Samsic Airport brings world-class airport infrastructure solutions to the American market. Operational excellence, delivered daily.</p>
+                            <button className="bg-sky-blue text-airport-navy text-label-bold font-label-bold py-3 px-8 rounded hover:bg-white transition-colors shadow-lg">Explore Our Network</button>
+                        </div>
+                    </div>
+                </section>
+                <section className="py-stack-lg md:py-[96px] px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+                    <div className="text-center mb-stack-lg">
+                        <h2 className="text-headline-md font-headline-md text-airport-navy mb-stack-sm">Our Core Services</h2>
+                        <p className="text-body-md font-body-md text-runway-gray max-w-3xl mx-auto">Precision-engineered solutions tailored for the demands of high-traffic US airports.</p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+                        {[
+                            { title: 'Ground Handling', desc: 'Comprehensive passenger, ramp, and cargo handling services designed to optimize turnaround times and ensure safety.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAyHGjqvYaMQhsts4rADFHqt49jmOPA1JY7ygDDU7ZJ7qYhMd3O7F6xdBi3wtmfvOhglmmY2aNRJjyI0Vn3d0SG12URw3PKL7bB5UbCjfxRN5AnTKjAin-RRwvXxLAVdZpqfRN4Dg3_WjPXigGre5rwYsnsVHe46MLOXoPxF4wna6hMwrYRwe5BCbxRXgIzYcMI6mPX7MOLTO9aLvvUBoWICocVk5nXjBSqKcP2W_nr5eSZAKPe4sOrVRMOLf0HyucWf3iMj6kNBs8' },
+                            { title: 'Security', desc: 'Rigorous screening and access control solutions to protect passengers, staff, and critical airport infrastructure.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuANlNKfsCq0SAmabmMuE9LAjjGO87eVO20LR9AW6Jr06NDg1aaEQVs-5YV3l5wP96CoAOesz8c2PIssjaKXo6vgxt3AcKHs2UiiDP9bdbOcrzfoCJjUADjel1-X59b1MLUXqv1vgRnDYuILah0C-clB8AtCUQhH9d_DJWl8WiA-SHZhGHtSErG7_eQ6e6wQphYFd1Rpkf9VoOLt7Qku8DsbYNnh8VWNJNuMwmRBZ4tJwy6daVC_9OV9S-5lrmQzg1t-Tr16sl7MS4o' },
+                            { title: 'Ramp & Flight Ops', desc: 'Precision coordination of aircraft loading, pushback, towing, and vital flight support services on the apron.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB6y6GLfdWjwqt_xm_bAatd4Stn3hRbL8YD4iaaXx_VFVT-j8_iaMFhaR9veTDZUBSicM-GST6tEo5W6Gpn-oEQU62gSml-tezTDD0rnZZRuv8FSLN-B7hiqt2LJJxD8fkYPo-aakRtwewxykYVQWW9WB0ml9QEFOAUg8el05dZdNpDqNo2_bojjW8LGwKoJ88gravW8E-qmXIBjz_RkJuK5eF7VyeD9ECt8cyvTRxThsyD6jPWXv86SbFptSbBekrySj2horr34qo' },
+                            { title: 'Airport Facilities', desc: 'Maintaining pristine environments through advanced cleaning, maintenance, and facility management protocols.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBYo1YhCZENj7VDU0V8pLWQmwVE4wx01-v-BifOGo79ca6kf9JZO9JgCNWlbSYfOsW-sXEEYQM93Glt5xiO3JK1Zf3oUMRwddX7noJLWDGImvruGBPLsSvWrFZt1cemzVJcUWudlwFV1b_-EGPpags-C6fK6lUCjAiJsH8YZH6IX-IpJjSw1bbBIV2gC9XZ6D0PqT9MgQ65GgpyKd3iCNsvdD4RjLIDDGRuB6cwge4C_7JA2agVNIFHUhAs-NTVkgE62281NBeviv4' }
+                        ].map((service, idx) => (
+                            <div key={idx} className="group bg-surface-container-lowest border border-runway-gray/10 rounded-lg overflow-hidden hover:shadow-[0px_4px_20px_rgba(30,54,105,0.08)] transition-all duration-300 flex flex-col">
+                                <div className="h-48 overflow-hidden">
+                                    <img alt={service.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={service.img} />
+                                </div>
+                                <div className="p-6 flex-grow flex flex-col">
+                                    <h3 className="text-body-lg font-headline-lg text-airport-navy mb-2 font-bold">{service.title}</h3>
+                                    <p className="text-body-md font-body-md text-runway-gray mb-4 flex-grow line-clamp-3">{service.desc}</p>
+                                    <a className="text-sky-blue text-label-bold font-label-bold flex items-center group-hover:underline decoration-sky-blue underline-offset-4 mt-auto" href="#">
+                                        Find out more <span className="material-symbols-outlined ml-1 text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+                                    </a>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            </main>
+        );
+
+        const CareersScreen = () => (
+            <main className="flex-grow">
+                <section className="relative w-full h-[614px] min-h-[500px] flex items-center justify-center overflow-hidden">
+                    <div className="absolute inset-0 z-0">
+                        <img alt="Careers Hero" className="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida/ADBb0ujYruGGy0tRwODx5oYgijk6-Sfn3uJoDoh638rEKYo69xpDzTw-oq3hja5OGZdOhrU_iGe-Lelz959NhmJ11wCw9cuyZe_u3C_A3razbhJaW5oHoh5NasA915Rv0eqHVetU36aOrcbi7wbtf612sMll07gUXya5EKjihBOHh1l9L_rurRAgMUZd3I7k8ocbT51WRw0XQuRvjKQc13FQX0zPJR_OP3F0QOFXAGS_Lzcvrfos09qSJfLveA" />
+                        <div className="absolute inset-0 bg-airport-navy/40 mix-blend-multiply"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-airport-navy/80 via-airport-navy/20 to-transparent"></div>
+                    </div>
+                    <div className="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full flex flex-col items-center">
+                        <h1 className="font-display-lg text-headline-lg-mobile md:text-display-lg text-white mb-stack-md max-w-4xl tracking-tight drop-shadow-md">Launch Your Career in Aviation</h1>
+                        <p className="font-body-lg text-body-lg text-clean-slate max-w-2xl mb-stack-lg drop-shadow">Join our expanding team providing world-class ground handling and airport services across the USA and Canada.</p>
+                        <a className="font-label-bold text-label-bold bg-sky-blue text-airport-navy px-8 py-4 rounded shadow-[0_4px_20px_rgba(30,54,105,0.08)] hover:bg-sky-blue/90 transition-all duration-300 inline-flex items-center gap-2" href="#openings">
+                            View Openings <span className="material-symbols-outlined text-xl">arrow_downward</span>
+                        </a>
+                    </div>
+                </section>
+                <section className="py-stack-lg md:py-24 px-margin-mobile md:px-margin-desktop bg-surface max-w-container-max mx-auto w-full">
+                    <div className="text-center mb-stack-lg md:mb-16">
+                        <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-airport-navy mb-stack-sm">Why Choose Samsic?</h2>
+                        <p className="font-body-lg text-body-lg text-runway-gray max-w-2xl mx-auto">We offer dynamic career paths in a fast-paced, critical industry where your work ensures smooth global operations.</p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                         {[
+                            { title: 'Global Presence', desc: 'Be part of an international network bringing European service excellence to major North American hubs.', icon: 'public', img: 'https://lh3.googleusercontent.com/aida/ADBb0ug1UPkS2Jc1wByBGKKWd_XwW7hgU2VXEdhzbqcrm5iZoq-Fca1ux7HCELqBJ9m23rCh_YBKvCl-MCNXE9gHLwGos1uSt2i_DemMGZZB1gwx-hpStTcvo9bcsKAIYCvwu8D5tSEUpyk8F55VmCHqBJ412Z_Cfpz1WkS4pL3LUfOiaRGXHlCPd684PsO8pyXzeEzPDnTZvSVSckfaHF8z59hbDFjDqLrCa8fxvDnccWkaz5kp_RUgd08M7X0' },
+                            { title: 'Professional Growth', desc: 'Comprehensive training programs and clear pathways for advancement from the ramp to management.', icon: 'trending_up', img: null },
+                            { title: 'Safety First', desc: 'Uncompromising operational rigor and safety standards protect our teams, partners, and passengers.', icon: 'health_and_safety', img: 'https://lh3.googleusercontent.com/aida/ADBb0ug4-7GQlxzp-Z4QJ8DiB2M8a83aoERbqcnFQXjbRQRnJ_BbUTUMPqF9AHU1AEMYcQvMOXAAESGLztFXFCDCT5w-PjmVJ5m7fBgL3vn3W1aI7xZ_ObvkrADmqnhg5Ch0KrTwyqOnDuZNjSUaslnZfkwcjBGvmDv9pLaI5CpPqKdhAEV4ygC-RGM8Er8lGKJUQgE3K0KoESOxm7iO1zd3yH6pqWzxPAhWUuQcpIst2ltYGCkLY1N3R_DcPWc', iconColor: 'text-safety-amber' }
+                        ].map((perk, idx) => (
+                            <div key={idx} className="bg-surface-container-lowest border border-runway-gray/10 rounded-lg overflow-hidden group hover:shadow-[0_4px_20px_rgba(30,54,105,0.08)] transition-all duration-300 flex flex-col h-full relative">
+                                {perk.img ? (
+                                    <div className="h-48 overflow-hidden relative">
+                                        <img alt={perk.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={perk.img} />
+                                        <div className="absolute top-4 left-4 bg-surface-container-lowest/90 backdrop-blur-sm p-2 rounded-full shadow-sm">
+                                            <span className={`material-symbols-outlined ${perk.iconColor || 'text-airport-navy'}`} data-weight="fill">{perk.icon}</span>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className="h-48 bg-clean-slate flex items-center justify-center relative overflow-hidden">
+                                        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #1E3669 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
+                                        <span className="material-symbols-outlined text-6xl text-sky-blue z-10">{perk.icon}</span>
+                                    </div>
+                                )}
+                                <div className="p-stack-md flex-grow flex flex-col">
+                                    <h3 className="font-headline-md text-headline-md text-airport-navy mb-stack-sm">{perk.title}</h3>
+                                    <p className="font-body-md text-body-md text-runway-gray flex-grow">{perk.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+                <section className="py-stack-lg md:py-24 px-margin-mobile md:px-margin-desktop bg-clean-slate w-full" id="openings">
+                    <div className="max-w-container-max mx-auto">
+                        <div className="flex flex-col md:flex-row justify-between items-end mb-stack-lg gap-4">
+                            <div>
+                                <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-airport-navy mb-stack-sm">Open Roles</h2>
+                                <p className="font-body-lg text-body-lg text-runway-gray">Find your next opportunity across our North American stations.</p>
+                            </div>
+                            <div className="w-full md:w-auto relative group">
+                                <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-runway-gray">search</span>
+                                <input className="w-full md:w-80 pl-10 pr-4 py-3 bg-surface-container-lowest border border-runway-gray/20 rounded font-body-md text-body-md text-on-surface focus:outline-none focus:border-sky-blue focus:ring-1 focus:ring-sky-blue transition-all" placeholder="Search by role or location..." type="text" />
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+                            {[
+                                { title: 'Ramp Agent', loc: 'JFK - New York', dept: 'Ground Handling', type: 'Full-Time', desc: 'Ensure safe, efficient baggage handling and aircraft servicing on the ramp.' },
+                                { title: 'Passenger Service Assistant', loc: 'YYZ - Toronto Pearson', dept: 'Passenger Services', type: 'Full-Time', desc: 'Deliver exceptional customer service assisting passengers with mobility needs.' }
+                            ].map((job, idx) => (
+                                <div key={idx} className="bg-surface-container-lowest p-stack-md rounded-lg border border-runway-gray/10 hover:shadow-[0_4px_20px_rgba(30,54,105,0.08)] transition-shadow duration-300 flex flex-col md:flex-row gap-6 items-start md:items-center justify-between group">
+                                    <div className="flex-grow">
+                                        <div className="flex flex-wrap gap-2 mb-3">
+                                            <span className="bg-surface-cream text-airport-navy px-3 py-1 rounded text-caption font-caption inline-flex items-center gap-1 border border-runway-gray/10">
+                                                <span className="material-symbols-outlined text-[16px]">location_on</span>{job.loc}
+                                            </span>
+                                            <span className="bg-clean-slate text-secondary px-3 py-1 rounded text-caption font-caption">{job.dept}</span>
+                                            <span className="bg-sky-blue/10 text-airport-navy px-3 py-1 rounded text-caption font-caption font-semibold">{job.type}</span>
+                                        </div>
+                                        <h3 className="font-headline-md text-headline-md text-airport-navy mb-1 group-hover:text-sky-blue transition-colors">{job.title}</h3>
+                                        <p className="font-body-md text-body-md text-runway-gray line-clamp-2">{job.desc}</p>
+                                    </div>
+                                    <button className="font-label-bold text-label-bold text-airport-navy border border-airport-navy px-6 py-2 rounded hover:bg-airport-navy hover:text-white transition-colors duration-200 whitespace-nowrap shrink-0">
+                                        Apply Now
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            </main>
+        );
+
+        const App = () => {
+            return (
+                <MemoryRouter>
+                    <Header />
+                    <Routes>
+                        <Route path="/" element={<ServicesScreen />} />
+                        <Route path="/careers" element={<CareersScreen />} />
+                    </Routes>
+                    <Footer />
+                </MemoryRouter>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
